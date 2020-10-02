@@ -20,18 +20,19 @@ def telaInicial():
     elements_col_layout = [
         [sg.Text('| Menu |', size=elements_col_size)],
         # Fazer um leitor que permitar pegar apenas imagem
-        [sg.FileBrowse('Ler diretorio de imagem',
-                       size=elements_col_size, key="_op_diretorio", enable_events=True)],
-        [sg.Button('Selecionar características',
-                   size=elements_col_size, key="_op_selecionar")],
+        [sg.FileBrowse('Abrir e vizualizar uma imagem',
+                       size=elements_col_size, key="_op_diretorio", enable_events=True)],       #Funcionando OK
+        [sg.FileBrowse('Ler diretorio para treino e teste',
+                   size=elements_col_size, key="_op_selecionar")],                              #David esta alterando
         [sg.Button('Treinar classificador',
                    size=elements_col_size, key="_op_treinar")],
-        [sg.Button('Abrir Imagem', size=elements_col_size, key="op_abrirImg")],
+        [sg.Button('Selecionar características',
+                   size=elements_col_size, key="_op_selecionar")],
         [sg.Button('Marcar região de interesse',
                    size=elements_col_size, key="_op_marcar")],
         [sg.Button('Calcular e exibir características',
                    size=elements_col_size, key="_op_calcular")],
-        [sg.Button('Classificar imagem/regiao',
+        [sg.Button('Classificar imagem/regiao selecionada',
                    size=elements_col_size, key="_op_classificar")],
         [sg.Button('zoom in', size=zoom_buttons_size, key="op_zoomO"), sg.Button(
             'zoom out', size=zoom_buttons_size, key="op_zoomI")],
