@@ -3,6 +3,8 @@ import PySimpleGUI as sg
 import explanation
 import algorithms
 import configs
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 def telaInicial():
     sg.theme(configs.theme)  # please make your windows colorful
@@ -64,7 +66,9 @@ def telaInicial():
             break
         elif event == '_op_diretorio':
             imgPath = values['_op_diretorio']
-            window['_image'].update(filename=imgPath)
+            img = mpimg.imread(imgPath)
+            plt.imshow(img)
+            plt.show()
         elif event == '_op_selecionar':
             folder = values['_op_selecionar']   #Pegar diretorio das pastas 
         elif event == '_op_treinar' and folder != "":
