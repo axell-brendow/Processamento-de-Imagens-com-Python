@@ -22,10 +22,10 @@ def telaInicial():
         # Fazer um leitor que permitar pegar apenas imagem
         [sg.FileBrowse('Abrir e vizualizar uma imagem',
                        size=elements_col_size, key="_op_diretorio", enable_events=True)],       #Funcionando OK
-        [sg.FileBrowse('Ler diretorio para treino e teste',
-                   size=elements_col_size, key="_op_selecionar")],                              #David esta alterando
+        [sg.FolderBrowse('Ler diretorio para treino e teste',
+                   size=elements_col_size, key="_op_selecionar", enable_events=True)],                              #David esta alterando
         [sg.Button('Treinar classificador',
-                   size=elements_col_size, key="_op_treinar")],
+                   size=elements_col_size, key="_op_treinar", enable_events=True)],
         [sg.Button('Selecionar características',
                    size=elements_col_size, key="_op_selecionar")],
         [sg.Button('Marcar região de interesse',
@@ -52,6 +52,7 @@ def telaInicial():
     while True:
         # event é uma ação e values é uma lista de dados
         event, values = window.read()
+        folder="VAZIO"
 
         if event == '_op_treinar':
             algorithms.train()
@@ -64,4 +65,14 @@ def telaInicial():
         elif event == '_op_diretorio':
             imgPath = values['_op_diretorio']
             window['_image'].update(filename=imgPath)
+        elif event == '_op_selecionar':
+            folder = values['_op_selecionar']   #Pegar diretorio das pastas 
+        elif event == '_op_treinar' and folder != "":
+            algorithms.train(folder)
+        elif event == 'op_zoomI':
+            print('+ zoom')
+        elif event == 'op_zoomO':
+            print('- zoom')     
+            
+
             
